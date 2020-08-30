@@ -69,7 +69,15 @@ Note: A list of all results I found for each of these portfolios can be found in
 
 ## Point of contention
 
-There are 
+There are a number of problems with this portfolio that I'd like to point out. 
+
+First and most simply/obviously is transaction costs. To be honest, I don't know the transaction costs of trading stocks too well. All of these portfolios only trade on a day-by-day basis (some of which only trade once), so while it might not be a big problem, is still something that should be kept in mind.
+
+Second is volatility. While I haven't done a deep dive into understanding the volatility of the portfolio I've created, I believe the sharpe ratios are so low mostly because of their high volatility. If we have higher returns than the S&P 500 but a similar/lower sharpe ratio, that must mean by definition that our volatility is higher. This also makes sense as we're dealing with less stocks than the S&P 500, which generally means we're going to have lower volatility as we don't branch out to more stable investment like treasury bonds. I'd furthermore like to do some analysis on the 5th percentile of returns to understand how hard it would be to lose basically all of the money invested, but I haven't gotten around to it; I think we should generally assume the worst in this scenario, however, as we're certainly not playing with the safest investments on the market. 
+
+Third is the value of a risk-free investment. I spent some time searching up how to calculate excess returns, and ended up on the probably over-simplified answer of 'about 0.05/252 per trading day'. As such, my sharpe ratios might be pumped up because of the possibility of this answer being too low/not valid for all time periods I have analyzed. 
+
+Lastly is the fact that I'm still a student, and still learning how to build trading portfolios. I haven't had the opportunity to run this over with a mentor, and as such there is a possibility I have messed something up through ignorance on the subject-matter. If you are someone of that sort and have gotten this far down this extremely long readme, I would greatly appreciate comments on my code, especially if those comments could lead to possibly different results than the ones I've obtained above.
 
 
 
