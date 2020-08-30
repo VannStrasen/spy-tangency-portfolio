@@ -5,8 +5,11 @@ These results were calculated using, and directly copied from, the function anal
 
 ### *** Statistical analysis for the following backtest:
 Number of symbols: 10
+
 In-sample: 2017-01-01 -- 2019-01-01
+
 Out-of-sample: 2019-01-01 -- 2020-01-01
+
 Sample size: 224
 
 #### Linear regression between in-sample & out of sample sharpe ratios:
@@ -37,8 +40,11 @@ R-squared: 1.8523971415884688e-05
 
 ### *** Statistical analysis for the following backtest:
 Number of symbols: 5
+
 In-sample: 2017-01-01 -- 2019-01-01
+
 Out-of-sample: 2019-01-01 -- 2020-01-01
+
 Sample size: 1213
 
 #### Linear regression between in-sample & out of sample sharpe ratios:
@@ -69,8 +75,11 @@ R-squared: 0.9826873065063462
 
 ### *** Statistical analysis for the following backtest:
 Number of symbols: 20
+
 In-sample: 2017-01-01 -- 2019-01-01
+
 Out-of-sample: 2019-01-01 -- 2020-01-01
+
 Sample size: 199
 
 #### Linear regression between in-sample & out of sample sharpe ratios:
@@ -101,8 +110,11 @@ R-squared: 0.10150950695336636
 
 ### *** Statistical analysis for the following backtest:
 Number of symbols: 5
+
 In-sample: 2018-01-01 -- 2020-01-01
+
 Out-of-sample: 2020-01-01 -- 2020-07-01
+
 Sample size: 549
 
 #### Linear regression between in-sample & out of sample sharpe ratios:
