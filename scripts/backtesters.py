@@ -1,6 +1,5 @@
 import pandas as pd
 import numpy as np
-from sklearn import linear_model
 import sys
 import finlib
 
@@ -9,7 +8,6 @@ import finlib
 # https://www.macroaxis.com/invest/Momentum-Indicators/Absolute-Price-Oscillator/GOOG
 
 
-# Backtester guide
 class Backtester:
     def __init__(self, cash):
         # Information that is used in each backtester
@@ -72,123 +70,7 @@ class Backtester:
         pass
 
 
-# A backtester
-class ForLoopBackTester:
-    def __init__(self, cash):
-        self.name = 'Naive Backtester'
-        self.list_position = []
-        self.list_cash = []
-        self.list_holdings = []
-        self.list_total = []
-
-        self.long_signal = False
-        self.position = 0
-        self.cash = cash
-        self.total = 0
-        self.holdings = 0
-
-        self.market_data_count = 0
-        self.prev_price = None
-        self.chosen_model = None
-        self.statistical_model = None
-        self.historical_data = pd.DataFrame(columns=['Trade',
-                                                     'Price',
-                                                     'OpenClose',
-                                                     'HighLow'])
-
-    def build_model(self, price_update):
-        # *** build model here, this is for the final: build an ML model ***
-        # logistic regression model to predict the data.
-        # We should use the FIT function ***
-        # The arguments are x and y for a supervised model, where x is the df
-        # and y is a column of output results.
-
-        # One way of answering this question:
-        if self.prev_price is not None:  # If we've had a previous price
-            self.historical_data.loc[self.market_data_count] = \
-                [1 if price_update['Adj Close'] > self.prev_price else -1,  # If current price is > prevous price.
-                 price_update['Adj Close'],  # Current price.
-                 price_update['Open'] - price_update['Close'],  # OpenClose
-                 price_update['High'] - price_update['Low']  # HighLow
-                 ]
-        self.prev_price = price_update['Adj Close']  # Update the previous price
-
-        if self.market_data_count == 1000:  # Say 1000 is a significant sample
-            X = self.historical_data[['OpenClose', 'HighLow']]
-            Y = self.historical_data['Trade']
-            self.chosen_model = linear_model.LogisticRegression()  # Gives us a prob b/t 0 & 1
-            self.chosen_model.fit(X, Y)
-            # Here, we're ultimately trying to create
-
-    def on_market_data_received(self, price_update):
-        # One way of writing the onMarketDataReceived function:
-
-        # Receiving any changes to price after the model has been built
-        self.build_model(price_update)  # Append this to some dataframe.
-        self.market_data_count += 1
-        # We shouldn't constantly be building the model, we should do it at
-        # the beginning and maybe other times, but it takes a long time to do
-        # that, so avoid it if possible.
-
-        if self.chosen_model is not None:
-            # Predict model -- predict where the price will be, higher or lower?
-            # Input (x) is dataframe that has one column of open close, and one
-            # column which is high low. The output column (y) will be price
-            # change. This might be conflating the above buildModel too.
-            # Here we should be using the function predict ***
-            # The variables are the X data (open clse, high low), and tries
-            # to output a price change.
-            # This might mean we just give one row of data (open close, high low)
-            # and then we get either [1, -1, 0] to signify [buy, sell, hold]
-            openclose = price_update['Open'] - price_update['Close']
-            highlow = price_update['High'] - price_update['Low']
-            pred_value = self.chosen_model.predict([[openclose, highlow]])
-            # print("Pred value:", pred_value)
-            if pred_value == 1:
-                return 'buy'
-            else:
-                return 'sell'
-
-        if self.market_data_count == 1:
-            return 'buy'
-        else:
-            return 'hold'
-
-    def buy_sell_or_hold(self, price_update, action):
-        if action == 'buy':
-            cash_needed = 100 * price_update['Adj Close']  # Need 100 * price of stock
-            if self.cash - cash_needed >= 0:
-                # print(str(price_update['Date']) +
-                #       " send buy order for 100 shares price=" + str(price_update['Adj Close']))
-                self.position += 100
-                self.cash -= cash_needed
-            else:
-                # print('buy impossible because not enough cash')
-                pass
-
-        if action == 'sell':
-            position_allowed = 100
-            if self.position - position_allowed >= -1 * position_allowed:
-                # print(str(price_update['Date']) +
-                #       " send sell order for 10 shares price=" + str(price_update['Adj Close']))
-                self.position -= position_allowed
-                self.cash -= -position_allowed * price_update['Adj Close']
-            else:
-                # print('sell impossible because not enough position')
-                pass
-
-        self.holdings = self.position * price_update['Adj Close']
-        self.total = (self.holdings + self.cash)
-        # print('%s total=%d, holding=%d, cash=%d' %
-        #       (str(price_update['Date']),self.total, self.holdings, self.cash))
-
-        self.list_position.append(self.position)
-        self.list_cash.append(self.cash)
-        self.list_holdings.append(self.holdings)
-        self.list_total.append(self.holdings+self.cash)
-
-
-# Another backtester, made by Vann
+# Hold backtester
 class Hodl(Backtester):
     def __init__(self, cash):
         self.name = 'HODL'
@@ -233,6 +115,7 @@ class Hodl(Backtester):
         self.list_total.append(self.holdings + self.cash)
 
 
+# Simple Moving Average backtester; not currently used.
 class SMA(Backtester):
     def __init__(self, cash, short_period, long_period):
         # Necessary info

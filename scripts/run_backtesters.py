@@ -4,7 +4,6 @@ import backtesters
 import pandas as pd
 import sys
 import os
-import numpy as np
 from pandas_datareader import data
 
 # pd.set_option('display.max_columns', None)
