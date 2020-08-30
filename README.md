@@ -10,7 +10,7 @@ I also learned in the beginning of this class about the investment strategy used
 
 However, Harvard did not just put a handful of stocks into a backet, run a mean-variance analysis on those stocks, and call it a day. Instead, they grouped stocks together into commonly used sections such as Domestic Equity, Foreign Equity, and more. Thus grew multiple layers of mean-variance analysis: (at least) one layer for grouping investments together into asset classes, and a higher layer for weighing asset classes into the final portfolio. This helped solve two different problems:
 
-\1) if you conduct a mean-variance analysis on a large group of investments, 
+1) if you conduct a mean-variance analysis on a large group of investments, 
 
 
 ## How my strategy is built
