@@ -36,6 +36,46 @@ I ran both investment strategies over each stock at the beginning before weighin
 
 I had 4 different portfolios I ran my code over, varying along the following variables:
 
-* num_symbols: 
+* cash: The amount of money allocated to the portfolio as a whole. Less money means less flexibility in choosing when to invest in a stock; if I don't have enough money to purchase a share of AAPL, that could greatly impact how well the mean-variance analysis works. 
 
-1) The baseline was as follows: 
+* num_symbols: The number of symbols to use in each GICS sector. As there were 11 GICS sectors, if num_symbols equals 5, for instance, then the portfolio would be invested in a total of 55 stocks in the S&P 500. If num_symbols ended up being greater than the number of stocks in a sector on the S&P 500 in total, then num_symbols for that specific sector would be capped at the total number of stocks on the S&P 500 in that sector. 
+
+* start_date_insample: The starting date for running backtesters on sample data. Note that the data used is adjusted close prices obtained from Yahoo Finance. If Yahoo Finance didn't have full information on that stock or the stock wasn't public up until this date, then that stock would be tossed and another stock would be grabbed from the same sector. 
+
+* end_date_insample: The ending date for running backtesters on sample data. 
+
+* start_date_outsample: The starting date for running the portfolio on data it wasn't trained against. On all portfolios I ran this was equal to end_date_insample, as the freshest data is typically the most relevant, but it's kept as a separate variable just in case.
+
+* end_date_outsample: The ending date for running the portfolio on data it wasn't trained against. The further this is away from start_date_outsample, the more likely the portfolio is to be out of date and thus perform worse. 
+
+Now knowing the variables used, here are the 4 different portfolios I ran:
+
+1) The baseline portfolio: cash=1,000,000, num_symbols=10, start_date_insample='2017-01-01', end_date_insample='2019-01-01', start_date_outsample='2019-01-01', end_date_outsample='2020-01-01'. \nNote that this
+
+analyze_summary_stats(num_symbols=5,
+start_date_insample='2017-01-01',
+end_date_insample='2019-01-01',
+start_date_outsample='2019-01-01',
+end_date_outsample='2020-01-01')
+analyze_summary_stats(num_symbols=10,
+start_date_insample='2017-01-01',
+end_date_insample='2019-01-01',
+start_date_outsample='2019-01-01',
+end_date_outsample='2020-01-01')
+analyze_summary_stats(num_symbols=20,
+start_date_insample='2017-01-01',
+end_date_insample='2019-01-01',
+start_date_outsample='2019-01-01',
+end_date_outsample='2020-01-01')
+analyze_summary_stats(num_symbols=5,
+start_date_insample='2018-01-01',
+end_date_insample='2020-01-01',
+start_date_outsample='2020-01-01',
+end_date_outsample='2020-07-01')
+
+
+
+
+
+
+
