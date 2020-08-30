@@ -32,7 +32,7 @@ Note that in this current iteration, I have two different ways of investing in a
 I ran both investment strategies over each stock at the beginning before weighing the sector-wide tangency portfolio, and chose to use whichever strategy had the higher sharpe ratio. While I could have used the MACD strategy not just on stocks but also on the sector-wide portfolios I was creating, I chose not to do so for this iteration. 
 
 
-## Results
+## Breakdown of each individual strategy
 
 I had 4 different portfolios I ran my code over, varying along the following variables:
 
@@ -50,7 +50,15 @@ I had 4 different portfolios I ran my code over, varying along the following var
 
 Now knowing the variables used, here are the 4 different portfolios I ran:
 
-1) The baseline portfolio: cash=1,000,000, num_symbols=10, start_date_insample='2017-01-01', end_date_insample='2019-01-01', start_date_outsample='2019-01-01', end_date_outsample='2020-01-01'. \nNote that this
+1) The baseline portfolio: cash=1,000,000, num_symbols=10, start_date_insample='2017-01-01', end_date_insample='2019-01-01', start_date_outsample='2019-01-01', end_date_outsample='2020-01-01'. Note that this baseline portfolio both has room to increase and decrease the number of symbols used per sector. Also note that this portfolio conveniently is before the coronavirus impacts America; I chose this as a baseline because I was afraid including the coronavirus would be such a shock to the investment strategy that it would automatically not work in that situation.
+2) Next portfolio: cash=1,000,000, num_symbols=20, start_date_insample='2017-01-01', end_date_insample='2019-01-01', start_date_outsample='2019-01-01', end_date_outsample='2020-01-01'. Essentially the same as above, except the number of symbols increased to 20. My hypothesis for this portfolio was that 20 symbols would be too many for the mean-variance analysis to create a profitable portfolio, so I expected it to perform worse than the baseline portfolio.
+3) Next portfolio:  cash=1,000,000, num_symbols=5, start_date_insample='2017-01-01', end_date_insample='2019-01-01', start_date_outsample='2019-01-01', end_date_outsample='2020-01-01'. Same as above except now num_symbols is 5. I also hypothesized that this would perform worse on average than the baseline portfolio because I thougth 5 symbols in each sector would not be enough to create a meaningful diversification. 
+4) The last portfolio I created after running the above 3 portfolios and seeing how well each of them did (and, to the astute reader, is a foreshadow to the results section): cash=1,000,000, num_symbols=5, start_date_insample='2018-01-01', end_date_insample='2020-01-01', start_date_outsample='2020-01-01', end_date_outsample='2020-07-01'. A portfolio that runs right through the thick of the madness and volatility that is the market during the coronavirus. 
+
+
+## Results
+
+
 
 analyze_summary_stats(num_symbols=5,
 start_date_insample='2017-01-01',
