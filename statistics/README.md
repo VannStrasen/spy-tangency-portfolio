@@ -3,7 +3,7 @@
 These results were calculated using, and directly copied from, the function analyze_summary_stats() in the stat_analysis.py file. 
 
 
-## *** Statistical analysis for the following backtest:
+### *** Statistical analysis for the following backtest:
 Number of symbols: 10
 In-sample: 2017-01-01 -- 2019-01-01
 Out-of-sample: 2019-01-01 -- 2020-01-01
@@ -35,7 +35,7 @@ R-squared: 1.8523971415884688e-05
 (-100709.60518233309, -47930.26925533002, 4849.066671673056)
 
 
-## *** Statistical analysis for the following backtest:
+### *** Statistical analysis for the following backtest:
 Number of symbols: 5
 In-sample: 2017-01-01 -- 2019-01-01
 Out-of-sample: 2019-01-01 -- 2020-01-01
@@ -67,7 +67,7 @@ R-squared: 0.9826873065063462
 (147520.91433417785, 556465.8556725775, 965410.7970109772)
 
 
-## *** Statistical analysis for the following backtest:
+### *** Statistical analysis for the following backtest:
 Number of symbols: 20
 In-sample: 2017-01-01 -- 2019-01-01
 Out-of-sample: 2019-01-01 -- 2020-01-01
@@ -99,7 +99,7 @@ R-squared: 0.10150950695336636
 (-7430.783742199383, 39268.627839583605, 85968.03942136659)
 
 
-## *** Statistical analysis for the following backtest:
+### *** Statistical analysis for the following backtest:
 Number of symbols: 5
 In-sample: 2018-01-01 -- 2020-01-01
 Out-of-sample: 2020-01-01 -- 2020-07-01
