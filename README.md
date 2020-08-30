@@ -14,10 +14,19 @@ However, Harvard did not just put a handful of stocks into a backet, run a mean-
 
 2) Conducting a mean-variance analysis on a large number of assets is not a stable way of conducting mean-variance analysis. One disadvantage of the mean-variance analysis is that, without any adjustments, the analysis assumes that all of the data it is given (data like historical information about asset prices) is extremely important and bound to occur in the future. If there are n assets in a portfolio, there are around n^2 covariances that the analysis asumes are factual, and it conforms the weights of each asset under the assumption that these covariances will not change. When they do change out-of-sample, this massively impacts the performance of the portfolio as there are a large number of coefficients changing at once. Ultimately, a larger dimensionality creates larger imprecision, so reducing this by creating multiple levels of mean-variance analysis helps minimize these problems. 
 
-
+I began thinking about creating this trading strategy soon after reading this paper. I wanted to figure out: How far could mean-variance analysis take me, even if I knew little about the company I would be investing in?
 
 
 ## How my strategy is built
 
+First, note that my strategy isn't one strategy, but is instead a distribution of randomly generated strategies. I wanted this project less to be about manually choosing individual stocks based on their performance/brand recognition/future potential/ability for the CEO to manipulate their stock price on twitter, and more on allowing the mean-variance analysis (as well as a couple other tricks) to do the work for me. My hope when beginning this project was that it didn't entirely matter what stocks I chose, as long as I used the mean-variance analysis precisely. As such, the results of this project include confidence intervals for how well these portfolios did on average, as well as linear regressions to see if I could have chosen a good portfolio based off of simple metris such as sharpe ratios or profits. 
+
+The portfolio works by being given from the investor a number of stocks in each GICS sector from the S&P 500, computing a mean variance analysis based off of backtester results from a given time-period (usually a year or so) to create a sector-wide tangency portfolio, running a backtester on said tangency portfolio over the same time-period, and then computing one last mean-variance analysis over each tangency portfolio to figure out how to weight each sector. 
+
+Note that in this current iteration, I have two different ways of investing in a stock:
+
+1) Holding the stock. Pretty simple; with x amount of cash, I try to buy as much of the stock as possible and hold it for the entire given time period.
+
+2) 
 
 ## Results
