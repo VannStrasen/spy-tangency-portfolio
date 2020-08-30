@@ -106,7 +106,7 @@ def obtain_symbols(num_symbols, testing=False):
 
 def download_sp500_symbols(delete=False):
     if delete:
-        path = 'symbol_data/'
+        path = '../symbol_data/'
         for file in os.listdir(path):
             os.remove(path + file)
 

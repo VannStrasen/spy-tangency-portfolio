@@ -106,12 +106,12 @@ def download_backtest_stats(cash, num_symbols, start_date_insample,
     # Now let's save the information to a csv.
     print("Saving to csv")
     df = pd.DataFrame(data=stats, index=[0])
-    path = 'statistics/summary_stats.csv'
+    path = '../statistics/summary_stats.csv'
     if os.path.exists(path) is False:
         # If this somehow is false, let's save the stats to a different file and
         # quit the program (as this shouldn't happen).
-        df.to_csv('statistics/summary_stats_new.csv', index=False)
-        sys.exit("'statistics/summary_stats.csv' does not exist.")
+        df.to_csv('../statistics/summary_stats_new.csv', index=False)
+        sys.exit(path + " does not exist.")
     else:
         # I was having problems appending the data to the csv directly. While
         # this is slower than doing as such, it solve the problem by copying
@@ -192,7 +192,7 @@ def analyze_summary_stats(num_symbols, start_date_insample, end_date_insample,
     print("Number of symbols:", num_symbols)
     print("In-sample:", start_date_insample + " -- " + end_date_insample)
     print("Out-of-sample:", start_date_outsample + " -- " + end_date_outsample)
-    stats = pd.read_csv('statistics/summary_stats.csv')
+    stats = pd.read_csv('../statistics/summary_stats.csv')
     stats = stats[(stats.num_symbols == num_symbols) &
                   (stats.start_date_insample == start_date_insample) &
                   (stats.end_date_insample == end_date_insample) &

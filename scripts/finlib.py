@@ -7,6 +7,7 @@ from pandas.tseries.offsets import CustomBusinessDay
 from pandas.tseries.holiday import get_calendar, HolidayCalendarFactory, \
     GoodFriday
 import datetime
+import os
 from pytz import timezone
 
 
@@ -24,11 +25,11 @@ def load_financial_data(symbol, output_file=None,
     available.
     :param end_date: Ending date in a string, e.g. '2018-01-01'.
     Defauls to none, where if none, data ends at the most recent trading day.
-    :param save: Whether to save the file or not. Defaults to False.
+    :param save: Boolean; Whether to save the file or not. Defaults to False.
     :return: A dataframe of the financial information.
     """
     if output_file is None:
-        output_file = 'symbol_data/' + symbol + '.pkl'
+        output_file = '../symbol_data/' + symbol + '.pkl'
     try:
         df = pd.read_pickle(output_file)
         print('File data found...reading data')
@@ -37,6 +38,9 @@ def load_financial_data(symbol, output_file=None,
             print('File not found...downloading the data')
             df = data.DataReader(symbol, 'yahoo', start=start_date, end=end_date)
             if save and output_file is not None:
+                if not os.path.isdir('../symbol_data'):
+                    # Make the folder symbol_data b/c it doesn't exist
+                    os.mkdir('../symbol_data')
                 df.to_pickle(output_file)
                 print('Data saved.')
         except KeyError:

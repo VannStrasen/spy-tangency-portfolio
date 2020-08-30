@@ -251,7 +251,8 @@ def get_symbol_data(start_date, end_date, num_symbols, symb_help,
             print("Working with:", symbol)
             symbol_data = finlib.load_financial_data(symbol=symbol,
                                                      start_date=start_date,
-                                                     end_date=end_date)
+                                                     end_date=end_date,
+                                                     save=True)
 
             # Correct number of trading days, to check if dataframe has all info
             num_trading_days = finlib.num_nyse_trading_days(start_date,
