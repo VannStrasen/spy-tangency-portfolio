@@ -34,7 +34,8 @@ I ran both investment strategies over each stock at the beginning before weighin
 
 ## Results
 
-I had 4 different portfolios I ran my code over:
+I had 4 different portfolios I ran my code over, varying along the following variables:
+
+* num_symbols: 
 
 1) The baseline was as follows: 
-    1) 
