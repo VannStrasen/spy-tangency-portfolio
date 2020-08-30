@@ -58,28 +58,9 @@ Now knowing the variables used, here are the 4 different portfolios I ran:
 
 ## Results
 
+Note: A list of all results I found for each of these portfolios can be found in the README of the statistics folder.
 
-
-analyze_summary_stats(num_symbols=5,
-start_date_insample='2017-01-01',
-end_date_insample='2019-01-01',
-start_date_outsample='2019-01-01',
-end_date_outsample='2020-01-01')
-analyze_summary_stats(num_symbols=10,
-start_date_insample='2017-01-01',
-end_date_insample='2019-01-01',
-start_date_outsample='2019-01-01',
-end_date_outsample='2020-01-01')
-analyze_summary_stats(num_symbols=20,
-start_date_insample='2017-01-01',
-end_date_insample='2019-01-01',
-start_date_outsample='2019-01-01',
-end_date_outsample='2020-01-01')
-analyze_summary_stats(num_symbols=5,
-start_date_insample='2018-01-01',
-end_date_insample='2020-01-01',
-start_date_outsample='2020-01-01',
-end_date_outsample='2020-07-01')
+1) The baseline portfolio 
 
 
 
