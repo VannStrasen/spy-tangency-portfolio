@@ -25,8 +25,16 @@ The portfolio works by being given from the investor a number of stocks in each 
 
 Note that in this current iteration, I have two different ways of investing in a stock:
 
-1) Holding the stock. Pretty simple; with x amount of cash, I try to buy as much of the stock as possible and hold it for the entire given time period.
+1) Holding the stock. Pretty simple; with x amount of cash, I try to buy as much of the stock as possible and hold it for the entire given time period. Note that this is also how I analyze how well the S&P 500 is doing — I hold SPY for the same amount of time. 
 
-2) 
+2) Using a Moving Average Convergence/Divergence indicator (MACD). I wanted to include a more technical investment strategy in part to practice what I had learned during class, but also in part because I thought it would provide interesting covariance interactions when comparing an investment that was just being held against an investment following the MACD strategy. I chose this against the Simple Moving Average indicator (SMA) because I knew the MACD weighs recent prices more than older prices while the SMA weighs each price the same, which generally meant it would catch onto quick upswings/downswings sooner than the SMA. 
+
+I ran both investment strategies over each stock at the beginning before weighing the sector-wide tangency portfolio, and chose to use whichever strategy had the higher sharpe ratio. While I could have used the MACD strategy not just on stocks but also on the sector-wide portfolios I was creating, I chose not to do so for this iteration. 
+
 
 ## Results
+
+I had 4 different portfolios I ran my code over:
+
+1) The baseline was as follows: 
+    1) 
