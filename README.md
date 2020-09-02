@@ -91,7 +91,10 @@ Lastly is the fact that I'm still a student, and still learning how to build tra
 
 
 ## Graphs 
-![Corona_5_in](img/corona_5_in.png) ![Corona_5_out](img/corona_5_out.png)
+<p float="left">
+    <img src="img/corona_5_in.png" width="100" />
+    <img src="img/corona_5_out.png" width="100" /> 
+</p>
 
 
 
