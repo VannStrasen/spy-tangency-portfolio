@@ -91,9 +91,9 @@ Lastly is the fact that I'm still a student, and still learning how to build tra
 
 
 ## Graphs 
-<p float="left">
-    <img src="img/corona_5_in.png" width="100" />
-    <img src="img/corona_5_out.png" width="100" /> 
+<p align="middle">
+    <img src="img/corona_5_in.png" width="400" />
+    <img src="img/corona_5_out.png" width="400" /> 
 </p>
 
 
