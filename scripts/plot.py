@@ -81,8 +81,8 @@ def compare_multiple_runs_of_program(cash, num_runs):
     symbol_helper_list = []
     spy_data = None
     for x in range(0, num_runs):
-        p, i, t, s, s_h = rb.setup_backtesters(
-            cash=cash, num_symbols=10, start_date='2019-01-01',
+        p, i, t, s, s_h, _ = rb.setup_backtesters(
+            cash=cash, num_symbols=5, start_date='2019-01-01',
             end_date='2020-01-01', testing=False)
         portfolio_wts_list.append(p)
         industry_wts_list.append(i)
