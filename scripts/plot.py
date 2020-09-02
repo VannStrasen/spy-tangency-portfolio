@@ -52,7 +52,7 @@ def profit_scatterplot(start_date_in, end_date_in, start_date_out, end_date_out,
     # Setting up SPY data
     x_spy = stats['spy_profits_insample'].iloc[0]
     y_spy = stats['spy_profits_outsample'].iloc[0]
-    plt.scatter(x_spy, y_spy, 15, c='#f0a029', label='SPY results')  # Visual edit
+    plt.scatter(x_spy, y_spy, 15, c='#f0a029', label='SPY result')  # Visual edit
 
     # Creating a line emphasizing where SPY is
     plt.axhline(y=y_spy, linewidth=1, color='#f0a029', alpha=0.5,
@@ -63,19 +63,18 @@ def profit_scatterplot(start_date_in, end_date_in, start_date_out, end_date_out,
     profit_summary = stat_analysis.regression_analysis_simple(
         y=stats['profit_outsample'], x=stats['profit_insample']
     )
-    print("Linspace")
     x = np.linspace(500000, 3500000, 100)  # Visual edit
     y = profit_summary['alpha'] + profit_summary['beta'] * x
-    print("Linspace2")
     plt.plot(x, y, lw=1, label='Portfolio best fit', alpha=0.5)  # Visual edit
 
     # Labeling graph
-    title = 'SPY Profits Versus Portfolio Profits, Overall\n' + \
-            start_date_out + ' -- ' + end_date_out + \
-            ', symbols per industry = ' + str(num_symbols)
+    title = 'SPY Profits VS Portfolio Profits\n' + \
+            'In: ' + start_date_in + ' -- ' + end_date_in + ' | ' + \
+            'Out: ' + start_date_out + ' -- ' + end_date_out + \
+            '\nSymbols per Industry = ' + str(num_symbols)
     plt.title(title)
-    plt.xlabel('In-Sample Profits')
-    plt.ylabel('Out of Sample Profits')
+    plt.xlabel('In-Sample Profit')
+    plt.ylabel('Out of Sample Profit')
     plt.legend()
 
     # Save the file
@@ -169,13 +168,13 @@ def compare_multiple_runs_of_program(cash, num_runs, start_date_in, end_date_in,
     # Now let's plot our results
     title = 'Comparing Multiple Porfolios, In-Sample Results\n' + \
             start_date_in + ' -- ' + end_date_in + \
-            ', symbols per industry = ' + str(num_symbols)
+            ', Symbols per Industry = ' + str(num_symbols)
     plot_data(
         data=insample_data,
         labels=['Portfolio 1', 'Portfolio 2', 'Portfolio 3', 'Portfolio 4',
                 'S&P500 if held'],
-        xlabel='Days since strategy began',
-        ylabel='Total profit',
+        xlabel='Days Since Strategy Began',
+        ylabel='Total Profit',
         title=title,
         file_name=file_name_in
     )
@@ -201,12 +200,12 @@ def compare_multiple_runs_of_program(cash, num_runs, start_date_in, end_date_in,
     # Now let's plot our results
     title = 'Comparing Multiple Porfolios, Out-of-Sample Results\n' + \
             start_date_out + ' -- ' + end_date_out + \
-            ', symbols per industry = ' + str(num_symbols)
+            ', Symbols per Industry = ' + str(num_symbols)
     plot_data(
         data=outsample_data,
         labels=['Portfolio 1', 'Portfolio 2', 'Portfolio 3', 'Portfolio 4',
                 'S&P500 if held'],
-        xlabel='Days since strategy began',
+        xlabel='Days Since Strategy Began',
         ylabel='Total Profit',
         title=title,
         file_name=file_name_out
@@ -219,3 +218,12 @@ if __name__ == '__main__':
     compare_multiple_runs_of_program(1000000, 4, '2018-01-01', '2020-01-01',
                                      '2020-01-01', '2020-07-01', 5,
                                      'corona_5_in.png', 'corona_5_out.png')
+    compare_multiple_runs_of_program(1000000, 4, '2017-01-01', '2019-01-01',
+                                     '2019-01-01', '2020-01-01', 5,
+                                     'noncorona_5_in.png', 'noncorona_5_out.png')
+    compare_multiple_runs_of_program(1000000, 4, '2017-01-01', '2019-01-01',
+                                     '2019-01-01', '2020-01-01', 10,
+                                     'noncorona_10_in.png', 'noncorona_10_out.png')
+    compare_multiple_runs_of_program(1000000, 4, '2017-01-01', '2019-01-01',
+                                     '2019-01-01', '2020-01-01', 20,
+                                     'noncorona_20_in.png', 'noncorona_20_out.png')
