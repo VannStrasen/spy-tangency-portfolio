@@ -93,19 +93,31 @@ Lastly is the fact that I'm still a student, and still learning how to build tra
 
 
 ## Graphs
-#### First strategy
+#### First strategy: 4 randomly selected portfolios versus SPY
 <p align="middle">
-    <img src="img/noncorona_5_in.png" width="400" />
-    <img src="img/noncorona_5_out.png" width="400" /> 
+    <img src="img/noncorona_10_in.png" width="400" />
+    <img src="img/noncorona_10_out.png" width="400" /> 
 </p>
 
-#### Fourth strategy
+#### Second strategy: 4 randomly selected portfolios versus SPY
+<p align="middle">
+    <img src="img/noncorona_20_in.png" width="400" />
+    <img src="img/noncorona_20_out.png" width="400" /> 
+</p>
+
+#### Third Strategy: 4 randomly selected portfolios versus SPY
+<p align="middle">
+    <img src="img/noncorona_5_in.png" width="400" />
+    <img src="img/noncorona_5_out.png" width="400" />   
+</p>
+
+#### Fourth strategy: 4 randomly selected portfolios versus SPY
 <p align="middle">
     <img src="img/corona_5_in.png" width="400" />
     <img src="img/corona_5_out.png" width="400" /> 
 </p>
 
-#### Scatterplot of Fourth Strategy
+#### Scatterplot of fourth strategy: Profits in-sample versus profits out of sample
 <p align="middle">
     <img src="img/corona_5_scatter.png" width="700" />
 </p>
