@@ -324,7 +324,7 @@ def get_symbol_data(start_date, end_date, num_symbols, symb_help,
                     # In this case it's because the downloaded data we have is
                     # not up to date. As such, let's redownload all of it and
                     # redo our info that we got.
-                    file_path = 'symbol_data/' + symbol + '.pkl'
+                    file_path = '../symbol_data/' + symbol + '.pkl'
                     os.remove(file_path)
                     symbol_data = finlib.load_financial_data(symbol, file_path,
                                                              start_date,  None,
