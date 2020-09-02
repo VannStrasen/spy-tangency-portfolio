@@ -11,7 +11,7 @@ import sys
 
 
 def profit_scatterplot(start_date_in, end_date_in, start_date_out, end_date_out,
-                       num_symbols):
+                       num_symbols, file_name):
     """
     This function helps graph a scatterplot of the in-sample and out of sample
     profits for a given sample set.
@@ -23,6 +23,7 @@ def profit_scatterplot(start_date_in, end_date_in, start_date_out, end_date_out,
     :param start_date_out: String; start date for out sample data. YYYY-mm-dd.
     :param end_date_out: String; end date for out sample data. YYYY-mm-dd.
     :param num_symbols: Number of symbols used per industry.
+    :param file_name: String; the name of the file when saved.
     :return:
     """
     # Getting data
@@ -76,15 +77,21 @@ def profit_scatterplot(start_date_in, end_date_in, start_date_out, end_date_out,
     plt.xlabel('In-Sample Profits')
     plt.ylabel('Out of Sample Profits')
     plt.legend()
+
+    # Save the file
+    plt.savefig('../img/' + file_name, dpi=300)
+
+    # Show the file
     plt.show()
 
 
-def plot_data(data, labels, xlabel='', ylabel='', title=''):
+def plot_data(data, labels, file_name, xlabel='', ylabel='', title=''):
     """
     Plots data onto a singular plot.
     :param data: A list holding lists of revenues. The data for the graph.
     :param labels: A list holding lists of strings. The labels to the graphs for
     the legend.
+    :param file_name: String; name of the file when saved.
     :param xlabel: String; the x label.
     :param ylabel: String; the y label.
     :param title: String; the title.
@@ -105,11 +112,17 @@ def plot_data(data, labels, xlabel='', ylabel='', title=''):
     plt.ylabel(ylabel)
     plt.title(title)
     plt.legend()
+
+    # Save the file
+    plt.savefig('../img/' + file_name, dpi=300)
+
+    # Show the graph
     plt.show()
 
 
 def compare_multiple_runs_of_program(cash, num_runs, start_date_in, end_date_in,
                                      start_date_out, end_date_out, num_symbols,
+                                     file_name_in, file_name_out,
                                      testing=False):
     """
     This function plots in-sample and out of sample profits for multiple runs
@@ -124,6 +137,8 @@ def compare_multiple_runs_of_program(cash, num_runs, start_date_in, end_date_in,
     :param start_date_out: String; Out-sample starting date. YYYY-mm-dd.
     :param end_date_out: String; Out-sample ending date. YYYY-mm-dd.
     :param num_symbols: Int; number of symbols to work with in each industry.
+    :param file_name_in: String, name of to-be-made-graph for in-sample data
+    :param file_name_out: String, name of to-be-made-graph for out-sample data
     :param testing: Bool; Whether to use all 11 GICS industries (True), or
     whether to only use 2, speeding up the calculations (False).
     :return: Two plots are put on SciView.
@@ -161,7 +176,8 @@ def compare_multiple_runs_of_program(cash, num_runs, start_date_in, end_date_in,
                 'S&P500 if held'],
         xlabel='Days since strategy began',
         ylabel='Total profit',
-        title=title
+        title=title,
+        file_name=file_name_in
     )
 
     # **************** Out of sample functions *************************
@@ -192,12 +208,14 @@ def compare_multiple_runs_of_program(cash, num_runs, start_date_in, end_date_in,
                 'S&P500 if held'],
         xlabel='Days since strategy began',
         ylabel='Total Profit',
-        title=title
+        title=title,
+        file_name=file_name_out
     )
 
 
 if __name__ == '__main__':
-    # profit_scatterplot('2018-01-01', '2020-01-01', '2020-01-01', '2020-07-01',
-    #                    5)
+    profit_scatterplot('2018-01-01', '2020-01-01', '2020-01-01', '2020-07-01',
+                       5, 'corona_5_scatter.png')
     compare_multiple_runs_of_program(1000000, 4, '2018-01-01', '2020-01-01',
-                                     '2020-01-01', '2020-07-01', 5)
+                                     '2020-01-01', '2020-07-01', 5,
+                                     'corona_5_in.png', 'corona_5_out.png')
