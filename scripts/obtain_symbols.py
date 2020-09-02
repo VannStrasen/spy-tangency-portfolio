@@ -2,7 +2,7 @@
 This file pertains to all functions related to getting symbol data, whether
 that means figuring out what symbols to obtain (getting s&p 500 data from
 wikipedia), randomizing which symbols to pick for the portfolio, downloading
-symbol data locally, etc. 
+symbol data locally, etc.
 """
 import pandas as pd
 import random
