@@ -1,6 +1,78 @@
 import run_backtesters as rb
 import matplotlib.pyplot as plt
+import stat_analysis
+import pandas as pd
+import numpy as np
 import sys
+
+
+def profit_scatterplot(start_date_in, end_date_in, start_date_out, end_date_out,
+                       num_symbols):
+    """
+    This function helps graph a scatterplot of the in-sample and out of sample
+    profits for a given sample set.
+    Note: As of now there are still small variables that need to be edited
+    in the function, variables that are purely visual. These are denoted with
+    the comment "# visual edit".
+    :param start_date_in: String; starting date for in-sample data. YYYY-mm-dd.
+    :param end_date_in: String; ending date for in-sample data. YYYY-mm-dd.
+    :param start_date_out: String; start date for out sample data. YYYY-mm-dd.
+    :param end_date_out: String; end date for out sample data. YYYY-mm-dd.
+    :param num_symbols: Number of symbols used per industry.
+    :return:
+    """
+    # Getting data
+    stats = pd.read_csv('../statistics/summary_stats.csv')
+
+    # Organizing stats by rows that meet correct sample requirements
+    stats = stats[(stats.num_symbols == num_symbols) &
+                  (stats.start_date_insample == start_date_in) &
+                  (stats.end_date_insample == end_date_in) &
+                  (stats.start_date_outsample == start_date_out) &
+                  (stats.end_date_outsample == end_date_out)]
+    sample_size_orig = stats.shape[0]
+    print("Sample size:", sample_size_orig)
+
+    # Organizing stats by profits that aren't outliers
+    stats = stats[(stats.profit_insample < 4000000) &  # Visual edit
+                  (stats.profit_outsample < 1500000)]  # Visual edit
+    sample_size = stats.shape[0]
+    outliers = sample_size_orig - sample_size
+    print("Outliers:", outliers)
+    print("Finalized sample size:", sample_size)
+    x = stats['profit_insample']
+    y = stats['profit_outsample']
+    plt.scatter(x, y, 3, c='#135b75', label='Portfolio results')  # Visual edit
+
+    # Setting up SPY data
+    x_spy = stats['spy_profits_insample'].iloc[0]
+    y_spy = stats['spy_profits_outsample'].iloc[0]
+    plt.scatter(x_spy, y_spy, 15, c='#f0a029', label='SPY results')  # Visual edit
+
+    # Creating a line emphasizing where SPY is
+    plt.axhline(y=y_spy, linewidth=1, color='#f0a029', alpha=0.5,
+                label='SPY, extended')  # Visual edit
+
+    # Creating a line that emphasizes the relationship between in-sample and
+    # out of sample profits
+    profit_summary = stat_analysis.regression_analysis_simple(
+        y=stats['profit_outsample'], x=stats['profit_insample']
+    )
+    print("Linspace")
+    x = np.linspace(500000, 3500000, 100)  # Visual edit
+    y = profit_summary['alpha'] + profit_summary['beta'] * x
+    print("Linspace2")
+    plt.plot(x, y, lw=1, label='Portfolio best fit', alpha=0.5)  # Visual edit
+
+    # Labeling graph
+    title = 'SPY Profits Versus Portfolio Profits, Overall\n' + \
+            start_date_out + ' -- ' + end_date_out + \
+            ', symbols per industry = ' + str(num_symbols)
+    plt.title(title)
+    plt.xlabel('In-Sample Profits')
+    plt.ylabel('Out of Sample Profits')
+    plt.legend()
+    plt.show()
 
 
 def plot_data(data, labels, xlabel='', ylabel='', title=''):
@@ -52,13 +124,6 @@ def compare_multiple_runs_of_program(cash, num_runs, start_date_in, end_date_in,
     whether to only use 2, speeding up the calculations (False).
     :return: Two plots are put on SciView.
     """
-    # """
-
-    # :param cash: The amount of money to be allocated to the portfolio/SPY.
-    # :param num_runs: The amount of runs to be plotted together.
-    # :return: Two pyplot plots, one of in-sample profits, and another with
-    # out of sample profits.
-    # """
 
     # *********** In sample functions ********************************
 
@@ -128,5 +193,7 @@ def compare_multiple_runs_of_program(cash, num_runs, start_date_in, end_date_in,
 
 
 if __name__ == '__main__':
-    compare_multiple_runs_of_program(1000000, 4, '2019-01-01', '2020-01-01',
-                                     '2020-01-01', '2020-07-01', 2, True)
+    # profit_scatterplot('2018-01-01', '2020-01-01', '2020-01-01', '2020-07-01',
+    #                    5)
+    compare_multiple_runs_of_program(1000000, 4, '2018-01-01', '2020-01-01',
+                                     '2020-01-01', '2020-07-01', 5)
