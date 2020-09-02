@@ -91,7 +91,7 @@ Lastly is the fact that I'm still a student, and still learning how to build tra
 
 
 ## Graphs 
-![Image 1](img/corona_5_scatter.png)
+![Corona_5_in](img/corona_5_in.png) ![Corona_5_out](img/corona_5_out.png)
 
 
 
