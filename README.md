@@ -1,7 +1,7 @@
 # spy-tangency-portfolio
 Randomized portfolio builder I made over the summer of 2020.
 
-The key takeaway from this project is that building a portfolio via mean-variance analysis can create a successful portfolio, even if you don't know anything in-depth about the sector/company you're investing in.
+The key takeaway from this project is that building a portfolio via mean-variance analysis can create a successful portfolio, even if you don't have nor use in-depth knowledge about the sector/company you're investing in.
 
 There are graphs at the bottom of the page which can help recap and visualize these findings. 
 
@@ -93,6 +93,12 @@ Lastly is the fact that I'm still a student, and still learning how to build tra
 
 
 ## Graphs
+
+#### Scatterplot of fourth strategy: Profits in-sample versus profits out of sample
+<p align="middle">
+<img src="img/corona_5_scatter.png" width="700" />
+</p>
+
 #### First strategy: 4 randomly selected portfolios versus SPY
 <p align="middle">
     <img src="img/noncorona_10_in.png" width="400" />
@@ -115,11 +121,6 @@ Lastly is the fact that I'm still a student, and still learning how to build tra
 <p align="middle">
     <img src="img/corona_5_in.png" width="400" />
     <img src="img/corona_5_out.png" width="400" /> 
-</p>
-
-#### Scatterplot of fourth strategy: Profits in-sample versus profits out of sample
-<p align="middle">
-    <img src="img/corona_5_scatter.png" width="700" />
 </p>
 
 
