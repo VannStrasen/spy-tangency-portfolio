@@ -463,7 +463,3 @@ def organize_backtester(bt):
     bt.historical_data['Total'] = bt.list_total  # Organize total earnings
     finlib.excess_returns(bt.historical_data, risk_free_rate=0.05/252,
                           column_name='Total')  # Get excess returns
-
-
-
-
