@@ -105,7 +105,7 @@ Lastly is the fact that I'm still a student, and still learning how to build tra
 
 #### Scatterplot of Fourth Strategy
 <p align="middle">
-    <img src="img/corona_5_scatter.png"/>
+    <img src="img/corona_5_scatter.png" width="700" />
 </p>
 
 
