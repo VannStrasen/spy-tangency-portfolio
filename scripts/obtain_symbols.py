@@ -1,3 +1,9 @@
+"""
+This file pertains to all functions related to getting symbol data, whether
+that means figuring out what symbols to obtain (getting s&p 500 data from
+wikipedia), randomizing which symbols to pick for the portfolio, downloading
+symbol data locally, etc. 
+"""
 import pandas as pd
 import random
 import sys
@@ -81,10 +87,23 @@ def get_random_symbols(dict_of_symbols, num_symbols):
     return res
 
 
-def new_symbol(removed_symbol, industry, symbol_list):
+def new_symbol(bad_symbol, industry, symbol_list):
+    """
+    Finds a new symbol that follows the following parameters:
+    1) Is not 'bad_symbol'
+    2) Is in industry 'industry'
+    3) Is not in the list 'symbol_list'
+    :param bad_symbol: String; a symbol that shouldn't be obtained when getting
+    a new symbol.
+    :param industry: String; the industry that the new symbol should be in;
+    used to indent into the dictionary 'stock_sectors'
+    :param symbol_list: List of strings; lists all symbols that should not
+    be obtained from the total list of symbols in the above industry.
+    :return: String; the name of the new symbol
+    """
     stock_sectors = organize_symbols()
     for symbol in stock_sectors[industry]:
-        if symbol != removed_symbol and (symbol not in symbol_list):
+        if symbol != bad_symbol and (symbol not in symbol_list):
             return symbol
 
 
@@ -105,11 +124,22 @@ def obtain_symbols(num_symbols, testing=False):
 
 
 def download_sp500_symbols(delete=False):
+    """
+    A helper function that is used to download historical symbol data pertaining
+    to the S&P 500 from 2015 until now. Saves all files as a .pkl file.
+    Doesn't download files that are already saved locally.
+    :param delete: Boolean; whether or not to delete all symbol data files
+    that are currently saved locally. Defaults to false.
+    :return: Nothing.
+    """
     if delete:
+        # We want to delete all files in the path's folder, maybe because
+        # something messed up so we just want to start over again.
         path = '../symbol_data/'
         for file in os.listdir(path):
             os.remove(path + file)
 
+    # Let's now download all symbols that we don't have yet.
     stock_sectors = organize_symbols()
     for industry in stock_sectors:
         for symbol in stock_sectors[industry]:
