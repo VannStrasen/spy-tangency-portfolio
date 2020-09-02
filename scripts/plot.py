@@ -217,4 +217,10 @@ if __name__ == '__main__':
     #                    5, 'corona_5_scatter.png')
     compare_multiple_runs_of_program(1000000, 4, '2017-01-01', '2019-01-01',
                                      '2019-01-01', '2020-01-01', 5,
-                                     'noncorona_5_in.png', 'noncorona_5_out.png')
+                                     'noncorona_5_in1.png', 'noncorona_5_out1.png')
+    compare_multiple_runs_of_program(1000000, 4, '2017-01-01', '2019-01-01',
+                                     '2019-01-01', '2020-01-01', 5,
+                                     'noncorona_5_in2.png', 'noncorona_5_out2.png')
+    compare_multiple_runs_of_program(1000000, 4, '2017-01-01', '2019-01-01',
+                                     '2019-01-01', '2020-01-01', 5,
+                                     'noncorona_5_in3.png', 'noncorona_5_out3.png')
