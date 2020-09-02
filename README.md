@@ -90,7 +90,14 @@ Fourth is the limits I've put on the mean-variance analysis (or lack thereof). I
 Lastly is the fact that I'm still a student, and still learning how to build trading portfolios. I haven't had the opportunity to run this over with a mentor, and as such there is a possibility I have messed something up through ignorance on the subject-matter. If you are someone of that sort and have gotten this far down this extremely long readme, I would greatly appreciate comments on my code, especially if those comments could lead to possibly different results than the ones I've obtained above.
 
 
-## Graphs 
+## Graphs
+#### First strategy
+<p align="middle">
+    <img src="img/noncorona_5_in.png" width="400" />
+    <img src="img/noncorona_5_out.png" width="400" /> 
+</p>
+
+#### Fourth strategy
 <p align="middle">
     <img src="img/corona_5_in.png" width="400" />
     <img src="img/corona_5_out.png" width="400" /> 
