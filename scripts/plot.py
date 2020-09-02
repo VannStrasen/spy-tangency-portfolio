@@ -1,3 +1,7 @@
+"""
+This file helps graph data obtained from previous runs saved from
+stat_analysis.py.
+"""
 import run_backtesters as rb
 import matplotlib.pyplot as plt
 import stat_analysis
