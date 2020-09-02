@@ -213,17 +213,11 @@ def compare_multiple_runs_of_program(cash, num_runs, start_date_in, end_date_in,
 
 
 if __name__ == '__main__':
-    profit_scatterplot('2018-01-01', '2020-01-01', '2020-01-01', '2020-07-01',
-                       5, 'corona_5_scatter.png')
-    compare_multiple_runs_of_program(1000000, 4, '2018-01-01', '2020-01-01',
-                                     '2020-01-01', '2020-07-01', 5,
-                                     'corona_5_in.png', 'corona_5_out.png')
-    compare_multiple_runs_of_program(1000000, 4, '2017-01-01', '2019-01-01',
-                                     '2019-01-01', '2020-01-01', 5,
-                                     'noncorona_5_in.png', 'noncorona_5_out.png')
-    compare_multiple_runs_of_program(1000000, 4, '2017-01-01', '2019-01-01',
-                                     '2019-01-01', '2020-01-01', 10,
-                                     'noncorona_10_in.png', 'noncorona_10_out.png')
+    # profit_scatterplot('2018-01-01', '2020-01-01', '2020-01-01', '2020-07-01',
+    #                    5, 'corona_5_scatter.png')
     compare_multiple_runs_of_program(1000000, 4, '2017-01-01', '2019-01-01',
                                      '2019-01-01', '2020-01-01', 20,
                                      'noncorona_20_in.png', 'noncorona_20_out.png')
+    compare_multiple_runs_of_program(1000000, 4, '2017-01-01', '2019-01-01',
+                                     '2019-01-01', '2020-01-01', 5,
+                                     'noncorona_5_in.png', 'noncorona_5_out.png')

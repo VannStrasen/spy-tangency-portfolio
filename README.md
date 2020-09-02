@@ -77,7 +77,7 @@ The first conclusion for this project stems from the performance of the 3rd and 
 The more general conclusion from this project is that mean-variance analysis works extremely well, if one uses it correctly. Too many symbols in one mean variance analysis can cause an overfitting of data; this is why samples where num_symbols = 5 performed better than samples where num_symbols = 10 or 20. 
 
 
-## Point of contention
+## Points of contention
 
 There are a number of problems with this portfolio that I'd like to point out. 
 
